@@ -34,8 +34,23 @@ namespace LinkedListQueue
             Node n = new Node();
             n.value = value;
 
-            n.next = head;
-            head = n;
+            if (IsEmpty())
+            {
+                head = n;
+                head.next = tail;
+            }
+
+            else if (!IsEmpty() && tail == null)
+            {
+                tail = n;
+                head.next = tail;                
+            }
+
+            else
+            {
+                n.next = head;
+                head = n;
+            }
         }
 
         public T Dequeue()
